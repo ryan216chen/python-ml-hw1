@@ -4,7 +4,7 @@ from pathlib import Path
 
 from sklearn.linear_model import SGDClassifier
 from sklearn.model_selection import cross_val_predict 
-from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay 
+from sklearn.metrics import classification_report, confusion_matrix, ConfusionMatrixDisplay
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
@@ -36,6 +36,8 @@ def main():
     )
 
     print(cm)
+    print("\n3-fold cross-validation classification report (training set):")
+    print(classification_report(y_train, y_pred, digits=4))
 
     disp = ConfusionMatrixDisplay(
         confusion_matrix=cm,
